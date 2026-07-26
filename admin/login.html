@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — She Glows Fashion Jewellery</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../images/cat_jhumkis.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="login-page">
+
+  <div class="login-card">
+    <!-- Logo -->
+    <div class="login-logo">
+      <div class="login-logo-icon">
+        <i class="fas fa-crown"></i>
+      </div>
+      <h2 class="gold-text">SHE GLOWS</h2>
+      <p>Admin Panel · Secure Access</p>
+    </div>
+
+    <!-- Status Message -->
+    <div id="login-msg" class="login-msg"></div>
+
+    <!-- Credentials Hint Badge -->
+    <div style="padding: 10px 14px; border-radius: 8px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); margin-bottom: 1.25rem; font-size: 0.82rem; color: var(--gold-secondary); text-align: center;">
+      <i class="fas fa-key" style="margin-right: 4px;"></i> <strong>Default Credentials:</strong><br>
+      Username: <code style="color:var(--text-light); font-weight:700;">Suji@123</code> &nbsp;|&nbsp; Password: <code style="color:var(--text-light); font-weight:700;">Suji@123</code>
+    </div>
+
+    <!-- Setup Form (fallback if reset) -->
+    <form id="setup-form" style="display:none;" onsubmit="return false;">
+      <div class="form-group">
+        <label class="form-label" for="setup-username">Username</label>
+        <input class="form-input" type="text" id="setup-username" value="Suji@123" required autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="setup-password">Password</label>
+        <div class="password-wrapper">
+          <input class="form-input" type="password" id="setup-password" value="Suji@123" required minlength="8">
+          <span class="password-toggle" onclick="togglePasswordVisibility('setup-password', this)"><i class="fas fa-eye"></i></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="setup-confirm">Confirm Password</label>
+        <div class="password-wrapper">
+          <input class="form-input" type="password" id="setup-confirm" value="Suji@123" required minlength="8">
+          <span class="password-toggle" onclick="togglePasswordVisibility('setup-confirm', this)"><i class="fas fa-eye"></i></span>
+        </div>
+      </div>
+      <button type="button" class="btn-login" onclick="handleSetup()">
+        <i class="fas fa-shield-alt"></i> Create Admin Account
+      </button>
+    </form>
+
+    <!-- Login Form -->
+    <form id="login-form" onsubmit="return false;">
+      <div class="form-group">
+        <label class="form-label" for="login-username">Username</label>
+        <input class="form-input" type="text" id="login-username" value="Suji@123" required autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="login-password">Password</label>
+        <div class="password-wrapper">
+          <input class="form-input" type="password" id="login-password" value="Suji@123" required>
+          <span class="password-toggle" onclick="togglePasswordVisibility('login-password', this)"><i class="fas fa-eye"></i></span>
+        </div>
+      </div>
+      <button type="button" class="btn-login" id="login-submit-btn" onclick="handleLogin()">
+        <i class="fas fa-sign-in-alt"></i> Sign In
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <a href="../index.html"><i class="fas fa-arrow-left"></i> Back to Store</a>
+    </div>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Ensure default credentials exist (Suji@123 / Suji@123)
+      await SheGlowsAuth.ensureDefaultCredentials();
+
+      // If already logged in, redirect to dashboard
+      if (SheGlowsAuth.isAuthenticated()) {
+        window.location.href = 'dashboard.html';
+        return;
+      }
+
+      // Check if redirected with expired session
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('expired') === '1') {
+        showMsg('Session expired. Please login again.', 'error');
+      }
+
+      // Enter key listeners
+      document.getElementById('login-password')?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleLogin();
+      });
+      document.getElementById('setup-confirm')?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleSetup();
+      });
+    });
+
+    function showMsg(text, type) {
+      const el = document.getElementById('login-msg');
+      el.textContent = text;
+      el.className = 'login-msg ' + type;
+    }
+
+    function clearMsg() {
+      const el = document.getElementById('login-msg');
+      el.textContent = '';
+      el.className = 'login-msg';
+    }
+
+    async function handleSetup() {
+      clearMsg();
+      const username = document.getElementById('setup-username').value.trim();
+      const password = document.getElementById('setup-password').value;
+      const confirm = document.getElementById('setup-confirm').value;
+
+      if (!username || !password) {
+        return showMsg('All fields are required.', 'error');
+      }
+      if (password !== confirm) {
+        return showMsg('Passwords do not match.', 'error');
+      }
+      if (password.length < 8) {
+        return showMsg('Password must be at least 8 characters.', 'error');
+      }
+
+      const result = await SheGlowsAuth.setupCredentials(username, password);
+      if (result.ok) {
+        showMsg('✅ Account created! Logging you in…', 'success');
+        const loginResult = await SheGlowsAuth.login(username, password);
+        if (loginResult.ok) {
+          setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+        }
+      } else {
+        showMsg(result.msg, 'error');
+      }
+    }
+
+    async function handleLogin() {
+      clearMsg();
+      const btn = document.getElementById('login-submit-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying…';
+
+      const username = document.getElementById('login-username').value.trim();
+      const password = document.getElementById('login-password').value;
+
+      if (!username || !password) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+        return showMsg('Please enter both username and password.', 'error');
+      }
+
+      const result = await SheGlowsAuth.login(username, password);
+
+      if (result.ok) {
+        showMsg('✅ Login successful! Redirecting…', 'success');
+        setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+        showMsg(result.msg, 'error');
+      }
+    }
+
+    function togglePasswordVisibility(inputId, toggle) {
+      const input = document.getElementById(inputId);
+      const icon = toggle.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+  </script>
+</body>
+</html>

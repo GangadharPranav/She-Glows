@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — She Glows Fashion Jewellery</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../images/cat_jhumkis.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+  <!-- Toast container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <div class="admin-layout">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon"><i class="fas fa-crown"></i></div>
+        <div>
+          <h3 class="gold-text">SHE GLOWS</h3>
+          <span>Admin Panel</span>
+        </div>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li><a href="#" class="active" data-section="dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="#" data-section="products"><i class="fas fa-gem"></i> Products</a></li>
+        <li><a href="#" data-section="settings"><i class="fas fa-cog"></i> Settings</a></li>
+        <li><a href="../index.html"><i class="fas fa-store"></i> View Store</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-logout-btn" onclick="doLogout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="admin-main">
+
+      <!-- Top bar -->
+      <div class="admin-topbar">
+        <div style="display:flex; align-items:center; gap:1rem;">
+          <button class="mobile-sidebar-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i> Menu
+          </button>
+          <h1 id="page-title">Dashboard</h1>
+        </div>
+        <div class="admin-topbar-actions">
+          <div class="admin-user-badge">
+            <i class="fas fa-user-shield"></i>
+            <span id="admin-username-display">Admin</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================== DASHBOARD SECTION ================== -->
+      <section id="section-dashboard">
+        <!-- Stats Row -->
+        <div class="stats-row" id="stats-row">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Recent Products Preview -->
+        <div class="admin-panel">
+          <div class="panel-header">
+            <h3><i class="fas fa-clock" style="color:var(--gold-primary); margin-right:8px;"></i> Recent Products</h3>
+            <button class="btn-outline-sm" onclick="switchSection('products')">View All <i class="fas fa-arrow-right"></i></button>
+          </div>
+          <div class="panel-body">
+            <table class="product-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recent-products-body">
+                <!-- JS populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== PRODUCTS SECTION ================== -->
+      <section id="section-products" style="display:none;">
+        <div class="admin-panel">
+          <div class="panel-header">
+            <h3><i class="fas fa-gem" style="color:var(--gold-primary); margin-right:8px;"></i> All Products</h3>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <button class="btn-primary-gold" onclick="openProductForm()">
+                <i class="fas fa-plus"></i> Add Product
+              </button>
+              <button class="btn-outline-sm" onclick="exportProducts()">
+                <i class="fas fa-download"></i> Export
+              </button>
+              <label class="btn-outline-sm" style="cursor:pointer;">
+                <i class="fas fa-upload"></i> Import
+                <input type="file" accept=".json" onchange="importProducts(event)" style="display:none;">
+              </label>
+            </div>
+          </div>
+          <div class="panel-body">
+            <table class="product-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>MRP</th>
+                  <th>Tag</th>
+                  <th>Stock</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="all-products-body">
+                <!-- JS populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== SETTINGS SECTION ================== -->
+      <section id="section-settings" style="display:none;">
+        <div class="admin-panel">
+          <div class="panel-header">
+            <h3><i class="fas fa-cog" style="color:var(--gold-primary); margin-right:8px;"></i> Account Settings</h3>
+          </div>
+          <div class="panel-body">
+            <div class="settings-section">
+              <h4>Change Password</h4>
+              <form onsubmit="return false;" style="max-width:400px;">
+                <div class="form-group">
+                  <label class="form-label" for="current-pw">Current Password</label>
+                  <input class="form-input" type="password" id="current-pw" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="new-pw">New Password</label>
+                  <input class="form-input" type="password" id="new-pw" required minlength="8">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="confirm-pw">Confirm New Password</label>
+                  <input class="form-input" type="password" id="confirm-pw" required minlength="8">
+                </div>
+                <button type="button" class="btn-primary-gold" onclick="handleChangePassword()">
+                  <i class="fas fa-key"></i> Update Password
+                </button>
+              </form>
+            </div>
+
+            <div class="settings-section">
+              <h4>Data Management</h4>
+              <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                <button class="btn-outline-sm" onclick="exportProducts()">
+                  <i class="fas fa-download"></i> Export All Data (JSON)
+                </button>
+                <button class="btn-danger-sm" onclick="confirmResetData()">
+                  <i class="fas fa-trash-alt"></i> Reset All Data to Default
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===================== ADD/EDIT PRODUCT MODAL ===================== -->
+  <div id="product-form-modal" class="form-modal-overlay">
+    <div class="form-modal">
+      <div class="form-modal-header">
+        <h3 id="form-modal-title"><i class="fas fa-plus" style="color:var(--gold-primary); margin-right:8px;"></i> Add New Product</h3>
+        <button class="form-modal-close" onclick="closeProductForm()">&times;</button>
+      </div>
+      <div class="form-modal-body">
+        <input type="hidden" id="edit-product-id">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="prod-title">Product Title *</label>
+            <input class="form-input" type="text" id="prod-title" placeholder="e.g. Royal Kundan Pearl Jhumki" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prod-category">Category *</label>
+            <select class="form-select" id="prod-category" required>
+              <option value="">Select Category</option>
+              <option value="earrings">Earrings</option>
+              <option value="jhumkis">Jhumkis</option>
+              <option value="bracelets">Bracelets</option>
+              <option value="kadas">Kadas</option>
+              <option value="chains">Chains</option>
+              <option value="kashmiri">Kashmiri Jewellery</option>
+              <option value="trending">Trending Jewellery</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="prod-price">Selling Price (₹) *</label>
+            <input class="form-input" type="number" id="prod-price" placeholder="1499" min="1" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prod-mrp">MRP (₹) *</label>
+            <input class="form-input" type="number" id="prod-mrp" placeholder="2999" min="1" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="prod-tag">Product Badge/Tag</label>
+            <input class="form-input" type="text" id="prod-tag" placeholder="e.g. Bestseller, Trending">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prod-stock">In Stock?</label>
+            <select class="form-select" id="prod-stock">
+              <option value="true">In Stock</option>
+              <option value="false">Out of Stock</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="prod-rating">Rating (0-5)</label>
+            <input class="form-input" type="number" id="prod-rating" placeholder="4.9" min="0" max="5" step="0.1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prod-reviews">Review Count</label>
+            <input class="form-input" type="number" id="prod-reviews" placeholder="128" min="0">
+          </div>
+        </div>
+
+        <div class="form-group form-group-full">
+          <label class="form-label" for="prod-desc">Description</label>
+          <textarea class="form-textarea" id="prod-desc" rows="3" placeholder="Write a compelling product description…"></textarea>
+        </div>
+
+        <div class="form-group form-group-full">
+          <label class="form-label">Product Image</label>
+          <div class="image-upload-zone" id="image-upload-zone" onclick="document.getElementById('prod-image-file').click()">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Click to upload or drag & drop (Max 2MB)</p>
+            <img id="image-preview" class="image-preview" alt="Preview">
+          </div>
+          <input type="file" id="prod-image-file" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
+          <input type="hidden" id="prod-image-data">
+        </div>
+      </div>
+      <div class="form-modal-footer">
+        <button class="btn-outline-sm" onclick="closeProductForm()">Cancel</button>
+        <button class="btn-primary-gold" onclick="saveProduct()">
+          <i class="fas fa-check"></i> <span id="form-save-label">Save Product</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONFIRM DIALOG ===================== -->
+  <div id="confirm-dialog" class="confirm-overlay">
+    <div class="confirm-box">
+      <h4 id="confirm-title">Are you sure?</h4>
+      <p id="confirm-message">This action cannot be undone.</p>
+      <div class="confirm-actions">
+        <button class="btn-outline-sm" onclick="closeConfirm()">Cancel</button>
+        <button class="btn-danger-sm" id="confirm-action-btn" onclick="">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/auth.js"></script>
+  <script src="../js/store.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

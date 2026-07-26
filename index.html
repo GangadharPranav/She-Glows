@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>She Glows - Luxury Fashion Jewellery | Inspired Elegance</title>
+  <meta name="description" content="Discover handcrafted luxury fashion jewellery at She Glows. Shop premium Jhumkis, Earrings, Kadas, Bracelets, Chains & Kashmiri Jewellery. Book directly via WhatsApp.">
+  <meta name="keywords" content="She Glows, Fashion Jewellery, Kushals inspired jewellery, Jhumkis, Kundan Jewellery, Kashmiri Jewellery, Gold Plated Earrings, Kadas, WhatsApp Jewellery Shop">
+  <meta name="author" content="She Glows Fashion Jewellery">
+  <link rel="icon" type="image/png" href="images/cat_jhumkis.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- 1. Announcement Ticker -->
+  <div class="announcement-bar">
+    <div class="container ticker-wrap">
+      <div class="ticker-content">
+        <span class="ticker-badge">✨ Special Offer</span>
+        <span>Free Shipping Across India | Order via WhatsApp for Exclusive Discounts</span>
+        <a href="https://wa.me/916239285798?text=Hi%20She%20Glows!%20I%20want%20to%20claim%20my%20Free%20Shipping%20discount." target="_blank" class="ticker-wa-link">
+          <i class="fab fa-whatsapp"></i> Claim Discount
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Main Header with Multi-Page Nav -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-emblem">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" stroke="url(#goldGrad)" stroke-width="3"/>
+            <path d="M50 18 L55 35 L72 35 L58 45 L63 62 L50 52 L37 62 L42 45 L28 35 L45 35 Z" fill="url(#goldGrad)"/>
+            <defs>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#BF953F"/>
+                <stop offset="50%" stop-color="#FCF6BA"/>
+                <stop offset="100%" stop-color="#AA771C"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-title-group">
+          <span class="brand-name gold-text">SHE GLOWS</span>
+          <span class="brand-tagline">Fashion Jewellery</span>
+        </div>
+      </a>
+
+      <div class="search-wrapper">
+        <div class="search-box">
+          <i class="fas fa-search search-btn"></i>
+          <input type="text" id="search-input" class="search-input" placeholder="Search for Earrings, Jhumkis, Kadas..." autocomplete="off">
+        </div>
+        <div id="search-results-dropdown" class="search-results-dropdown"></div>
+      </div>
+
+      <div class="header-actions">
+        <a href="https://wa.me/916239285798?text=Hi%20She%20Glows,%20I%20would%20like%20to%20enquire%20about%20your%20jewellery." target="_blank" rel="noopener" class="contact-whatsapp-btn">
+          <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i>
+          <span>Call / WhatsApp: 6239285798</span>
+        </a>
+        <button class="icon-action-btn" title="Wishlist">
+          <i class="far fa-heart"></i>
+          <span class="badge-count" id="wishlist-count-badge">0</span>
+        </button>
+        <button class="mobile-nav-toggle" onclick="toggleMobileNav()" title="Toggle Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sub Navigation (Multi-Page + Categories) -->
+    <nav class="category-nav-bar">
+      <div class="container">
+        <ul class="cat-menu-list">
+          <li class="cat-menu-item"><a href="index.html" class="active-page">Home</a></li>
+          <li class="cat-menu-item"><a href="shop.html">Shop All</a></li>
+          <li class="cat-menu-item"><a href="#categories-section">Earrings</a></li>
+          <li class="cat-menu-item"><a href="#categories-section">Jhumkis</a></li>
+          <li class="cat-menu-item"><a href="#categories-section">Kadas</a></li>
+          <li class="cat-menu-item"><a href="#categories-section">Kashmiri</a></li>
+          <li class="cat-menu-item highlight"><a href="shop.html"><i class="fas fa-fire"></i> Trending</a></li>
+          <li class="cat-menu-item"><a href="about.html">About</a></li>
+          <li class="cat-menu-item"><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 3. Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg-glow"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fas fa-crown"></i> Royal Heritage Collection 2026
+          </div>
+          <h1 class="hero-title">
+            Elegance That Makes You <span class="gold-text">Glow</span>
+          </h1>
+          <p class="hero-subtitle">
+            Discover handcrafted fashion jewellery designed for every occasion — from royal wedding Kundan sets to everyday subtle gold elegance.
+          </p>
+          <div class="hero-cta-group">
+            <a href="https://wa.me/916239285798?text=Hi%20She%20Glows,%20I%20want%20to%20explore%20your%20jewellery%20catalog!" target="_blank" class="btn-gold-primary">
+              <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Shop via WhatsApp
+            </a>
+            <a href="shop.html" class="btn-outline-gold">
+              Explore Collections <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item"><h3>10,000+</h3><p>Happy Clients</p></div>
+            <div class="stat-item"><h3>100%</h3><p>Handcrafted</p></div>
+            <div class="stat-item"><h3>48 Hrs</h3><p>Fast Dispatch</p></div>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <div class="hero-frame">
+            <img src="images/hero_banner.png" alt="She Glows Royal Jewellery Model">
+          </div>
+          <div class="hero-float-badge">
+            <div class="badge-icon"><i class="fas fa-gem"></i></div>
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--gold-secondary);">Anti-Tarnish Polish</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">22K Gold Micro-Plating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Categories Grid -->
+  <section id="categories-section" class="categories-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Curated Collections</span>
+        <h2 class="section-title">Explore By <span class="gold-text">Category</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card" onclick="filterByCategory('earrings')">
+          <div class="category-avatar-wrap"><img src="images/cat_earrings.png" alt="Earrings"></div>
+          <span class="category-name">Earrings</span>
+        </div>
+        <div class="category-card" onclick="filterByCategory('jhumkis')">
+          <div class="category-avatar-wrap"><img src="images/cat_jhumkis.png" alt="Jhumkis"></div>
+          <span class="category-name">Jhumkis</span>
+        </div>
+        <div class="category-card" onclick="filterByCategory('bracelets')">
+          <div class="category-avatar-wrap"><img src="images/cat_bracelets.png" alt="Bracelets"></div>
+          <span class="category-name">Bracelets</span>
+        </div>
+        <div class="category-card" onclick="filterByCategory('kadas')">
+          <div class="category-avatar-wrap"><img src="images/cat_kadas.png" alt="Kadas"></div>
+          <span class="category-name">Kadas</span>
+        </div>
+        <div class="category-card" onclick="filterByCategory('chains')">
+          <div class="category-avatar-wrap"><img src="images/cat_chains.png" alt="Chains"></div>
+          <span class="category-name">Chains</span>
+        </div>
+        <div class="category-card" onclick="filterByCategory('kashmiri')">
+          <div class="category-avatar-wrap"><img src="images/cat_kashmiri.png" alt="Kashmiri"></div>
+          <span class="category-name">Kashmiri Jewellery</span>
+        </div>
+        <div class="category-card" onclick="filterByCategory('trending')">
+          <div class="category-avatar-wrap"><img src="images/cat_trending.png" alt="Trending"></div>
+          <span class="category-name">Trending</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Products Showcase -->
+  <section id="products-section" class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Handcrafted Masterpieces</span>
+        <h2 class="section-title">Trending <span class="gold-text">Jewellery Showcase</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="filter-tabs-wrapper">
+        <button class="tab-btn active" data-tab="all">All Designs</button>
+        <button class="tab-btn" data-tab="jhumkis">Jhumkis</button>
+        <button class="tab-btn" data-tab="earrings">Earrings</button>
+        <button class="tab-btn" data-tab="kadas">Kadas</button>
+        <button class="tab-btn" data-tab="kashmiri">Kashmiri Special</button>
+        <button class="tab-btn" data-tab="under999">Under ₹999</button>
+      </div>
+      <div id="products-grid-container" class="products-grid"></div>
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="shop.html" class="btn-outline-gold">View Full Catalogue <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Features -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon-circle"><i class="fas fa-shield-alt"></i></div>
+          <h4>Anti-Tarnish Polish</h4>
+          <p>22K Gold & Rhodium micro-plated to retain permanent brilliant shine.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon-circle"><i class="fab fa-whatsapp"></i></div>
+          <h4>Direct WhatsApp Orders</h4>
+          <p>Instantly book your favorite pieces via direct chat with our experts.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon-circle"><i class="fas fa-truck-fast"></i></div>
+          <h4>Express All-India Delivery</h4>
+          <p>Safe, insured & tracked shipping to over 25,000+ pincodes.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon-circle"><i class="fas fa-hand-holding-heart"></i></div>
+          <h4>Master Artisan Quality</h4>
+          <p>Intricately handcrafted with high-grade Kundan, Zircon & Pearls.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Loved By Women Across India</span>
+        <h2 class="section-title">Client <span class="gold-text">Reviews</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">"The Royal Antique Kundan Jhumki I ordered on WhatsApp arrived in just 3 days! The gold shine and weight are identical to real gold jewellery."</p>
+          <div class="user-info">
+            <div class="user-avatar">P</div>
+            <div class="user-details"><h5>Priya Sharma</h5><span>Delhi, Verified Buyer</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">"Absolutely stunned by the authentic Kashmiri Dejhoor set. Everyone at my cousin's wedding complimented my look. She Glows is top class!"</p>
+          <div class="user-info">
+            <div class="user-avatar">A</div>
+            <div class="user-details"><h5>Ananya Bhat</h5><span>Srinagar, Verified Buyer</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">"Booking directly via WhatsApp was so effortless. They shared extra video clips of the Temple Kadas before dispatch. Highly recommended!"</p>
+          <div class="user-info">
+            <div class="user-avatar">S</div>
+            <div class="user-details"><h5>Sunita Reddy</h5><span>Hyderabad, Verified Buyer</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="logo-emblem">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="46" stroke="url(#goldGradF)" stroke-width="3"/>
+                <path d="M50 18 L55 35 L72 35 L58 45 L63 62 L50 52 L37 62 L42 45 L28 35 L45 35 Z" fill="url(#goldGradF)"/>
+                <defs><linearGradient id="goldGradF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#BF953F"/><stop offset="50%" stop-color="#FCF6BA"/><stop offset="100%" stop-color="#AA771C"/></linearGradient></defs>
+              </svg>
+            </div>
+            <div class="brand-title-group">
+              <span class="brand-name gold-text">SHE GLOWS</span>
+              <span class="brand-tagline">Fashion Jewellery</span>
+            </div>
+          </a>
+          <p>Redefining luxury fashion jewellery with royal handcrafted Kundan, Zircon, Temple & Kashmiri collections.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop All</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html">Earrings & Danglers</a></li>
+            <li><a href="shop.html">Royal Jhumkis</a></li>
+            <li><a href="shop.html">Kadas & Bangles</a></li>
+            <li><a href="shop.html">Kashmiri Special</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Direct Contact</h4>
+          <div class="contact-card-box">
+            <p><i class="fas fa-phone-alt" style="color: var(--gold-primary); margin-right: 6px;"></i> Call / WhatsApp Hotline:</p>
+            <a href="https://wa.me/916239285798" target="_blank" style="font-size: 1.1rem; font-weight: 800; color: #25D366; display: block; margin-bottom: 12px;">
+              <i class="fab fa-whatsapp"></i> +91 6239285798
+            </a>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Available 9:00 AM – 9:00 PM IST (Mon – Sat)</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 <strong>She Glows Fashion Jewellery</strong>. All rights reserved.</div>
+        <div class="social-links">
+          <a href="https://wa.me/916239285798" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 9. Floating WhatsApp -->
+  <div class="floating-whatsapp-widget">
+    <div class="wa-pulse"></div>
+    <a href="https://wa.me/916239285798?text=Hi%20She%20Glows!%20I%20want%20to%20ask%20a%20question%20about%20your%20jewellery." target="_blank" class="floating-wa-btn">
+      <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i>
+      <span>WhatsApp Us: 6239285798</span>
+    </a>
+  </div>
+
+  <!-- 10. Quick View Modal -->
+  <div id="quick-view-modal" class="modal-overlay">
+    <div class="modal-container">
+      <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      <div class="modal-body">
+        <img id="modal-img" src="" alt="Product Image" class="modal-product-img">
+        <div class="modal-product-info">
+          <h3 id="modal-title" class="modal-product-title"></h3>
+          <div id="modal-price" class="modal-price-tag"></div>
+          <p id="modal-desc" class="modal-desc"></p>
+          <label style="font-size: 0.8rem; color: var(--gold-secondary); margin-bottom: 4px; font-weight: 600;">Customization Notes (Optional):</label>
+          <textarea class="modal-notes-field" rows="2" placeholder="e.g. Gift box request, specific size preference..."></textarea>
+          <a id="modal-wa-btn" href="#" target="_blank" class="btn-book-wa" style="margin-top: auto; padding: 12px 0;">
+            <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Confirm Order via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: Store first, then main app -->
+  <script src="js/store.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
