@@ -484,7 +484,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 700;
 }
 
-.panel-body { padding: 1.5rem; }
+.panel-body { padding: 1.5rem; overflow-x: auto; }
 
 /* Product Table */
 .product-table {
