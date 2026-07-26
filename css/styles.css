@@ -201,10 +201,10 @@ img {
 }
 
 .logo-emblem {
-  width: 48px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  border: 1.5px solid var(--gold-primary);
+  border: 2px solid var(--gold-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,6 +214,12 @@ img {
   overflow: hidden;
   background: var(--bg-card);
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.brand-logo:hover .logo-emblem {
+  transform: scale(1.05);
+  border-color: var(--gold-secondary);
 }
 
 .brand-logo-img {
@@ -221,6 +227,7 @@ img {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+  transform: scale(1.06);
 }
 
 .brand-title-group {
@@ -1379,8 +1386,8 @@ img {
     letter-spacing: 1.5px;
   }
   .logo-emblem {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
   }
   .search-wrapper {
     max-width: 170px;
